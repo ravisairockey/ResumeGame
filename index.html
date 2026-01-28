@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ravi Sai Vigneswar | Resume</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --card: #111318;
+      --accent: #4fd1c5;
+      --accent-soft: rgba(79, 209, 197, 0.12);
+      --text-main: #f7fafc;
+      --text-muted: #a0aec0;
+      --border-subtle: #2d3748;
+      --heading: #e2e8f0;
+      --chip-bg: #1a202c;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+      --radius-lg: 18px;
+      --radius-md: 999px;
+      --transition-fast: 180ms ease-out;
+      --transition-med: 240ms ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #02020a 48%, #000000 100%);
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      padding: 40px 16px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 900px;
+      background: linear-gradient(145deg, #080911 0, #050608 45%, #060a10 100%);
+      border-radius: 24px;
+      border: 1px solid rgba(148, 163, 184, 0.15);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    /* Subtle background accents */
+    .page::before,
+    .page::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(40px);
+      opacity: 0.28;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page::before {
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, #4fd1c5 0, transparent 70%);
+      top: -60px;
+      right: -40px;
+    }
+
+    .page::after {
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, #667eea 0, transparent 70%);
+      bottom: -80px;
+      left: -40px;
+    }
+
+    .inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.1fr);
+      gap: 28px;
+      padding: 28px 28px 30px;
+    }
+
+    @media (max-width: 780px) {
+      .inner {
+        grid-template-columns: 1fr;
+        padding: 22px 18px 24px;
+      }
+    }
+
+    /* Left column: main content */
+    .left-col {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    /* Right column: sidebar content */
+    .right-col {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .title-block {
+      flex: 1;
+    }
+
+    .name {
+      font-size: 1.9rem;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--heading);
+    }
+
+    .role-tagline {
+      margin-top: 6px;
+      font-size: 0.9rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      margin-top: 10px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, rgba(79, 209, 197, 0.22), rgba(56, 189, 248, 0.08));
+      border: 1px solid rgba(79, 209, 197, 0.45);
+      font-size: 0.74rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: #e6fffa;
+    }
+
+    .tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #e6fffa;
+      box-shadow: 0 0 0 4px rgba(45, 212, 191, 0.25);
+    }
+
+    /* Avatar placeholder (minimal) */
+    .avatar {
+      width: 68px;
+      height: 68px;
+      border-radius: 22px;
+      background: radial-gradient(circle at 20% 0, #4fd1c5 0, #1a202c 40%, #020617 100%);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #e6fffa;
+      transform: translateY(2px);
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.8);
+    }
+
+    /* Contact row */
+    .contact-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin-top: 14px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .contact-item:hover {
+      background: rgba(15, 23, 42, 0.95);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .contact-label {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.65rem;
+      color: #718096;
+    }
+
+    .contact-value a,
+    .contact-value {
+      color: var(--text-main);
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    .contact-value a:hover {
+      color: var(--accent);
+    }
+
+    /* Section blocks */
+    .section {
+      padding: 14px 16px 14px;
+      background: radial-gradient(circle at top left, rgba(79, 209, 197, 0.04) 0, rgba(15, 23, 42, 0.96) 40%);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(75, 85, 99, 0.8);
+      backdrop-filter: blur(16px);
+      transition: border-color var(--transition-med), box-shadow var(--transition-med), transform var(--transition-fast);
+    }
+
+    .section:hover {
+      border-color: rgba(79, 209, 197, 0.65);
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.85);
+      transform: translateY(-1px);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 0.9rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #cbd5f5;
+    }
+
+    .section-accent-bar {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(79, 209, 197, 0.5), transparent);
+      opacity: 0.75;
+    }
+
+    .section-body {
+      font-size: 0.85rem;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* Summary */
+    .summary {
+      color: var(--text-muted);
+    }
+
+    .summary strong {
+      color: #e2e8f0;
+      font-weight: 600;
+    }
+
+    /* Education */
+    .edu-item {
+      display: grid;
+      grid-template-columns: minmax(0, 2.5fr) minmax(0, 1.3fr);
+      gap: 6px 14px;
+      padding: 8px 8px 9px;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 780px) {
+      .edu-item {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .edu-main-title {
+      font-weight: 600;
+      color: #e5e7eb;
+      font-size: 0.9rem;
+    }
+
+    .edu-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .edu-meta {
+      text-align: right;
+      font-size: 0.78rem;
+      color: #cbd5e1;
+    }
+
+    @media (max-width: 780px) {
+      .edu-meta {
+        text-align: left;
+      }
+    }
+
+    .edu-location {
+      display: block;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+
+    .edu-tag {
+      display: inline-flex;
+      margin-top: 4px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.7rem;
+      color: #e2e8f0;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Lists */
+    .list {
+      list-style: none;
+      margin-top: 4px;
+    }
+
+    .list li {
+      position: relative;
+      padding-left: 14px;
+      margin-bottom: 4px;
+      color: var(--text-muted);
+    }
+
+    .list li::before {
+      content: "";
+      position: absolute;
+      top: 7px;
+      left: 3px;
+      width: 4px;
+      height: 4px;
+      border-radius: 999px;
+      background: var(--accent);
+      opacity: 0.7;
+    }
+
+    /* Skill chips */
+    .chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .chip {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      font-size: 0.75rem;
+      color: #e5e7eb;
+      transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .chip--accent {
+      border-color: rgba(79, 209, 197, 0.75);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .chip:hover {
+      background: rgba(15, 23, 42, 1);
+      border-color: var(--accent);
+      transform: translateY(-0.5px);
+    }
+
+    /* Micro interaction hover on subtle link-style text */
+    a.inline-link {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(79, 209, 197, 0.6);
+      padding-bottom: 1px;
+      transition: color var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+    }
+
+    a.inline-link:hover {
+      color: #e6fffa;
+      border-color: #e6fffa;
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    /* Sidebar titles smaller */
+    .section--compact .section-title {
+      font-size: 0.8rem;
+    }
+
+    .section--compact .section-body {
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="inner">
+      <!-- LEFT COLUMN -->
+      <section class="left-col">
+        <!-- Header -->
+        <header class="header">
+          <div class="title-block">
+            <h1 class="name">Ravi Sai Vigneswar</h1>
+            <p class="role-tagline">Game Design • PC Gaming • Interactive Media</p>
+            <div class="tag-pill">
+              <span class="tag-dot"></span>
+              <span>Game Design Student</span>
+            </div>
+
+            <div class="contact-bar">
+              <div class="contact-item">
+                <span class="contact-label">Email</span>
+                <span class="contact-value">
+                  <a href="mailto:ravisairockey2004@gmail.com">ravisairockey2004@gmail.com</a>
+                </span>
+              </div>
+              <div class="contact-item">
+                <span class="contact-label">Phone</span>
+                <span class="contact-value">+91&nbsp;72859&nbsp;94545</span>
+              </div>
+              <div class="contact-item">
+                <span class="contact-label">Location</span>
+                <span class="contact-value">Bangalore, India 560064</span>
+              </div>
+              <div class="contact-item">
+                <span class="contact-label">LinkedIn</span>
+                <span class="contact-value">
+                  <a href="https://www.linkedin.com/in/ravi-sai-vigneswara-113894191" target="_blank" rel="noreferrer">
+                    /in/ravi-sai-vigneswara-113894191
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Simple monogram avatar -->
+          <div class="avatar" aria-hidden="true">
+            RS
+          </div>
+        </header>
+
+        <!-- Summary -->
+        <section class="section">
+          <div class="section-header">
+            <h2 class="section-title">Professional Summary</h2>
+            <div class="section-accent-bar"></div>
+          </div>
+          <div class="section-body summary">
+            Passionate <strong>game design</strong> student with strong PC gaming experience and high competitive rankings, focused on the gaming and interactive media industry.  
+            Skilled in gameplay understanding, boss mechanics, and combat systems, with hands-on exposure to content creation and video production tools.  
+            Seeking opportunities in game design, QA, or gameplay-focused roles to apply creativity, analytical thinking, and solid game sense.
+          </div>
+        </section>
+
+        <!-- Education -->
+        <section class="section">
+          <div class="section-header">
+            <h2 class="section-title">Education</h2>
+            <div class="section-accent-bar"></div>
+          </div>
+          <div class="section-body">
+            <div class="edu-item">
+              <div>
+                <div class="edu-main-title">Bachelor of Arts (BA), Game Design</div>
+                <div class="edu-sub">Jain (Deemed-to-be University), School of Design, Media &amp; Creative Arts</div>
+                <span class="edu-location">Bengaluru, Karnataka 562157</span>
+                <span class="edu-tag">Undergraduate • Game Design</span>
+              </div>
+              <div class="edu-meta">
+                Nov 2022 – Aug 2025  
+                <span class="edu-location">Full-time Program</span>
+              </div>
+            </div>
+
+            <div class="edu-item">
+              <div>
+                <div class="edu-main-title">Pre-University (PU), 11th &amp; 12th</div>
+                <div class="edu-sub">Christ PU College – Residential &amp; Christ Junior College – Residential</div>
+                <span class="edu-location">
+                  P.O, Mysore Road, Kanminike, Kumbalgodu, Bengaluru, Karnataka 560074
+                </span>
+                <span class="edu-tag">CGPA: 8+/10</span>
+              </div>
+              <div class="edu-meta">
+                Completed prior to 2022  
+                <span class="edu-location">Pre-University Education</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Projects & Activities -->
+        <section class="section">
+          <div class="section-header">
+            <h2 class="section-title">Projects &amp; Activities</h2>
+            <div class="section-accent-bar"></div>
+          </div>
+          <div class="section-body">
+            <h3 style="font-size:0.88rem; color:#e5e7eb; margin-bottom:4px;">
+              Personal Gaming Projects (Informal)
+            </h3>
+            <ul class="list">
+              <li>
+                Regularly engage in high-level PC gameplay, focusing on mastering mechanics, optimizing builds, and maintaining strong seasonal rankings in multiple titles.
+              </li>
+              <li>
+                Explore combat design, boss patterns, and difficulty scaling through challenging PvE and boss encounters.
+              </li>
+            </ul>
+
+            <h3 style="font-size:0.88rem; color:#e5e7eb; margin:10px 0 4px;">
+              Content &amp; Visual Experiments
+            </h3>
+            <ul class="list">
+              <li>
+                Experiment with game visuals, highlight clips, and short segments using DaVinci Resolve, Adobe Photoshop, and Adobe Premiere Pro.
+              </li>
+              <li>
+                Maintain a small gaming-focused channel for selective uploads, using it as a sandbox to refine editing rhythm, pacing, and visual clarity.
+              </li>
+            </ul>
+          </div>
+        </section>
+      </section>
+
+      <!-- RIGHT COLUMN (SIDEBAR) -->
+      <aside class="right-col">
+        <!-- Skills -->
+        <section class="section section--compact">
+          <div class="section-header">
+            <h2 class="section-title">Skills</h2>
+            <div class="section-accent-bar"></div>
+          </div>
+          <div class="section-body">
+            <h3 style="font-size:0.8rem; color:#cbd5f5; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:4px;">
+              Gaming
+            </h3>
+            <ul class="list">
+              <li>Top Mythic ranker in <strong>Where Winds Meet</strong> (ongoing season).</li>
+              <li>Diamond rank in <strong>Marvel Rivals</strong> (ongoing season).</li>
+              <li>Skilled in boss “no hit” and abyss-style achievements.</li>
+              <li>Strong understanding of PC gaming, combat systems, and progression.</li>
+            </ul>
+
+            <h3 style="font-size:0.8rem; color:#cbd5f5; letter-spacing:0.12em; text-transform:uppercase; margin:10px 0 4px;">
+              Software &amp; Creative Tools
+            </h3>
+            <div class="chips-row">
+              <span class="chip chip--accent">DaVinci Resolve</span>
+              <span class="chip">Adobe Photoshop</span>
+              <span class="chip">Adobe Premiere Pro</span>
+            </div>
+
+            <h3 style="font-size:0.8rem; color:#cbd5f5; letter-spacing:0.12em; text-transform:uppercase; margin:10px 0 4px;">
+              Core Strengths
+            </h3>
+            <div class="chips-row">
+              <span class="chip">Fast learner</span>
+              <span class="chip">Adaptable</span>
+              <span class="chip">Attention to mechanics</span>
+              <span class="chip">Pattern recognition</span>
+              <span class="chip">Analytical thinking</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Experience placeholder (can be hidden or used later) -->
+        <section class="section section--compact">
+          <div class="section-header">
+            <h2 class="section-title">Experience</h2>
+            <div class="section-accent-bar"></div>
+          </div>
+          <div class="section-body">
+            <p style="color:var(--text-muted); font-size:0.8rem; line-height:1.6;">
+              Currently focused on academics, personal gaming progression, and self-driven projects in game design and content experiments. Open to internships and entry-level opportunities in game design, QA, and related roles.
+            </p>
+          </div>
+        </section>
+
+        <!-- Interests -->
+        <section class="section section--compact">
+          <div class="section-header">
+            <h2 class="section-title">Interests</h2>
+            <div class="section-accent-bar"></div>
+          </div>
+          <div class="section-body">
+            <ul class="list">
+              <li>PC gaming, especially competitive, RPG, and action titles.</li>
+              <li>Watching Donghua and exploring new stories and animation styles.</li>
+              <li>Reading Manhua and narrative-heavy visual content.</li>
+            </ul>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>
