@@ -49,7 +49,6 @@
       isolation: isolate;
     }
 
-    /* Subtle background accents */
     .page::before,
     .page::after {
       content: "";
@@ -93,21 +92,18 @@
       }
     }
 
-    /* Left column: main content */
     .left-col {
       display: flex;
       flex-direction: column;
       gap: 22px;
     }
 
-    /* Right column: sidebar content */
     .right-col {
       display: flex;
       flex-direction: column;
       gap: 18px;
     }
 
-    /* Header */
     .header {
       display: flex;
       align-items: flex-start;
@@ -161,7 +157,6 @@
       box-shadow: 0 0 0 4px rgba(45, 212, 191, 0.25);
     }
 
-    /* Avatar placeholder (minimal) */
     .avatar {
       width: 68px;
       height: 68px;
@@ -176,9 +171,9 @@
       color: #e6fffa;
       transform: translateY(2px);
       box-shadow: 0 12px 28px rgba(15, 23, 42, 0.8);
+      overflow: hidden;
     }
 
-    /* Contact row */
     .contact-bar {
       display: flex;
       flex-wrap: wrap;
@@ -223,7 +218,6 @@
       color: var(--accent);
     }
 
-    /* Section blocks */
     .section {
       padding: 14px 16px 14px;
       background: radial-gradient(circle at top left, rgba(79, 209, 197, 0.04) 0, rgba(15, 23, 42, 0.96) 40%);
@@ -267,7 +261,6 @@
       line-height: 1.6;
     }
 
-    /* Summary */
     .summary {
       color: var(--text-muted);
     }
@@ -277,7 +270,6 @@
       font-weight: 600;
     }
 
-    /* Education */
     .edu-item {
       display: grid;
       grid-template-columns: minmax(0, 2.5fr) minmax(0, 1.3fr);
@@ -337,7 +329,6 @@
       text-transform: uppercase;
     }
 
-    /* Lists */
     .list {
       list-style: none;
       margin-top: 4px;
@@ -362,7 +353,6 @@
       opacity: 0.7;
     }
 
-    /* Skill chips */
     .chips-row {
       display: flex;
       flex-wrap: wrap;
@@ -391,22 +381,6 @@
       transform: translateY(-0.5px);
     }
 
-    /* Micro interaction hover on subtle link-style text */
-    a.inline-link {
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1px dotted rgba(79, 209, 197, 0.6);
-      padding-bottom: 1px;
-      transition: color var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
-    }
-
-    a.inline-link:hover {
-      color: #e6fffa;
-      border-color: #e6fffa;
-      background: rgba(15, 23, 42, 0.85);
-    }
-
-    /* Sidebar titles smaller */
     .section--compact .section-title {
       font-size: 0.8rem;
     }
@@ -457,13 +431,12 @@
             </div>
           </div>
 
-          <!-- Simple monogram avatar -->
           <div class="avatar">
-  <img src="ravi-avatar.png"
-       alt="Ravi Sai Vigneswar"
-       style="width:100%;height:100%;border-radius:22px;object-fit:cover;border:1px solid rgba(148,163,184,0.4);" />
-</div>
-
+            <img src="ravi-avatar.png"
+                 alt="Ravi Sai Vigneswar"
+                 style="width:100%;height:100%;object-fit:cover;border-radius:22px;" />
+          </div>
+        </header>
 
         <!-- Summary -->
         <section class="section">
@@ -472,9 +445,9 @@
             <div class="section-accent-bar"></div>
           </div>
           <div class="section-body summary">
-            Passionate <strong>game design</strong> student with strong PC gaming experience and high competitive rankings, focused on the gaming and interactive media industry.  
-            Skilled in gameplay understanding, boss mechanics, and combat systems, with hands-on exposure to content creation and video production tools.  
-            Seeking opportunities in game design, QA, or gameplay-focused roles to apply creativity, analytical thinking, and solid game sense.
+            Passionate <strong>game design graduate</strong> with strong PC gaming experience and high competitive rankings, focused on the gaming and interactive media industry.
+            Skilled in gameplay understanding, boss mechanics, and combat systems, with hands-on exposure to content creation and video production tools.
+            Seeking entry-level opportunities in game design, QA, or gameplay-focused roles to apply creativity, analytical thinking, and solid game sense.
           </div>
         </section>
 
@@ -490,7 +463,7 @@
                 <div class="edu-main-title">Bachelor of Arts (BA), Game Design</div>
                 <div class="edu-sub">Jain (Deemed-to-be University), School of Design, Media &amp; Creative Arts</div>
                 <span class="edu-location">Bengaluru, Karnataka 562157</span>
-                <span class="edu-tag">Undergraduate • Game Design</span>
+                <span class="edu-tag">8.6 GPA • Game Design</span>
               </div>
               <div class="edu-meta">
                 Nov 2022 – Aug 2025  
@@ -501,14 +474,14 @@
             <div class="edu-item">
               <div>
                 <div class="edu-main-title">Pre-University (PU), 11th &amp; 12th</div>
-                <div class="edu-sub">Christ PU College – Residential &amp; Christ Junior College – Residential</div>
+                <div class="edu-sub">Christ PU College – Residential</div>
                 <span class="edu-location">
                   P.O, Mysore Road, Kanminike, Kumbalgodu, Bengaluru, Karnataka 560074
                 </span>
-                <span class="edu-tag">CGPA: 8+/10</span>
+                <span class="edu-tag">7.5 GPA</span>
               </div>
               <div class="edu-meta">
-                Completed prior to 2022  
+                May 2020 – 2022  
                 <span class="edu-location">Pre-University Education</span>
               </div>
             </div>
@@ -590,7 +563,7 @@
           </div>
         </section>
 
-        <!-- Experience placeholder (can be hidden or used later) -->
+        <!-- Experience -->
         <section class="section section--compact">
           <div class="section-header">
             <h2 class="section-title">Experience</h2>
